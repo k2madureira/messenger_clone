@@ -15,4 +15,4 @@ const firebaseApp = firebase.initializeApp({
 
 const bd = firebaseApp.firestore();
 
-export { bd };
+export default bd;
