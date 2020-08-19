@@ -1,10 +1,10 @@
 import React from 'react'
 import './Message.css';
 
-function Message({ text }) {
+function Message({ text, username }) {
   return (
     <div>
-      <h2>{ text }</h2>
+      <h2>{ username }:{ text }</h2>
     </div>
   )
 }

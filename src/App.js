@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, Input, InputLabel, FormHelperText } from '@material-ui/core';
+import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import './App.css';
 import Message from './Message';
 
 function App() {
 const [input, setInput] = useState('');
-const [messages, setMessages] = useState([]);
+const [messages, setMessages] = useState([{username:'shark', text:'Yo'},{}]);
 const [userName, setUserName] = useState('');
 
 useEffect(()=>{
  //const name =  prompt('Seu apelido:');
 
  setUserName(prompt('Seu apelido:'));
-},[input]);
+},[]);
 
 const sendMessage = (event) => {
   event.preventDefault();
-  setMessages([...messages, input]);
+  setMessages([...messages, {username: userName, text: input}]);
   setInput('');
 }
 
@@ -36,7 +36,7 @@ const sendMessage = (event) => {
      
      {
        messages.map(message => (
-         <Message text={message}/>
+         <Message username={message.username} text={message.text}/>
        ))
      }
     </div>
