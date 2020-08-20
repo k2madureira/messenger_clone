@@ -1,4 +1,10 @@
-This project was bootstrapped with React
+# Messenger clone
+
+This project was developed with React and Firebase, aiming to create a chat in real time.
+
+Try: https://message-clone-5e22a.web.app/
+
+![example](https://user-images.githubusercontent.com/26586585/90834723-50f6d100-e321-11ea-84de-f55248013584.gif)
 
 ## Available Scripts
 
