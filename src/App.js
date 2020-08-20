@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
+import { IconButton , FormControl, Input } from '@material-ui/core';
+import FlipMove from 'react-flip-move';
+import SendIcon from '@material-ui/icons/Send';
 
 import db from './firebase';
 import firebase from 'firebase/app';
@@ -17,7 +19,7 @@ useEffect(() => {
   db.collection('messages')
   .orderBy('timestamp','desc')
   .onSnapshot(snapshot => {
-    setMessages(snapshot.docs.map(doc => doc.data()))
+    setMessages(snapshot.docs.map(doc => ({id:doc.id,message:doc.data()})))
   })
 }, [])
 
@@ -40,24 +42,30 @@ const sendMessage = (event) => {
 }
 
   return (
-    <div className="App">
+    <div className="app">
+    <img className="app_logo" src="logo.png" alt="messange logo"/>
      <h1>Messager</h1>
      <h2>Seja bem vindo(a), {userName} </h2>
-     <form action="">
 
-      <FormControl>
-          <InputLabel >Digite sua menssagem...</InputLabel>
-          <Input value={input} onChange={event => setInput(event.target.value)} />
-          <Button disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}> Send </Button>
-        </FormControl>
-
+     <form className="app_form">
+      <FormControl className="app_formControl">
+        <Input className="app_input" placeholder="Digite sua menssagem..." value={input} onChange={event => setInput(event.target.value)} /> 
+        <IconButton
+         className="app_iconButton" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}
+        >
+          <SendIcon />
+        </IconButton>
+      </FormControl>
      </form>
-     
-     {
-       messages.map(message => (
-         <Message username={userName} message={message}/>
-       ))
+
+     <FlipMove>
+      {
+        messages.map(({id,message}) => (
+          <Message key={id} username={userName} message={message}/>
+        ))
      }
+     </FlipMove>
+    
     </div>
   );
 }
