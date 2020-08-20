@@ -1,0 +1,36 @@
+
+.form_box {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
+  bottom: 0;
+  z-index: 1;
+  background-color: #b6b6f9;
+}
+
+
+
+.form_control {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.form_control > p {
+  margin-left: 10px;
+}
+
+.form_input_send {
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  flex: 1;
+  background-color: white !important;
+  border-radius: 0px 10px 10px !important;
+  
+}
+
+.form_button_icon {
+  flex: 0;
+}
