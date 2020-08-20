@@ -1,36 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { IconButton , FormControl, Input } from '@material-ui/core';
 import FlipMove from 'react-flip-move';
 import SendIcon from '@material-ui/icons/Send';
 
-import db from './firebase';
+import db from './config/firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 import './App.css';
-import Message from './Message';
+import Message from './message/Message';
 
-function App() {
+
+
+const App = () => {
 const [input, setInput] = useState('');
 const [messages, setMessages] = useState([]);
 const [userName, setUserName] = useState('');
+const app_containerRef = useRef(null);
+
+
 
 useEffect(() => {
+  
   db.collection('messages')
   .orderBy('timestamp','desc')
   .onSnapshot(snapshot => {
     setMessages(snapshot.docs.map(doc => ({id:doc.id,message:doc.data()})))
   });
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+ 
+ 
 }, [])
 
 useEffect(()=>{
- setUserName(prompt('Seu apelido:'));
-},[]);
+  setUserName(prompt('Seu apelido:'));
+},[])
 
 const sendMessage = (event) => {
   event.preventDefault();
@@ -44,6 +47,7 @@ const sendMessage = (event) => {
   setInput('');
 }
 
+
   return (
     <div className="app">
       <div className="app_header">
@@ -51,12 +55,13 @@ const sendMessage = (event) => {
         <h2>Seja bem vindo(a), {userName || '👽'} </h2>
       </div>
       <div className="app_container">
-        <FlipMove className="app_messages_box">
+     
+        <FlipMove className="app_messages_box" ref={app_containerRef}>
           {
             messages.map(({id,message}) => (
               <Message key={id} username={userName} message={message}/>
             ))
-        }
+          }
         </FlipMove>
 
       </div>
