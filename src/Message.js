@@ -13,7 +13,7 @@ const Message = forwardRef(({ message, username }, ref) => {
         <Card className={isUser? "message_userCard" : "message_guestCard"}>
           <CardContent>
             <Typography
-            color="white"
+            className="message_text"
             variant="h5"
             component="h2"
             >

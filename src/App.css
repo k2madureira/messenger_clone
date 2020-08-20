@@ -1,22 +1,37 @@
-
+html {
+  font-family: 'Roboto', sans-serif;
+  background-color:#f0f0f0;
+}
 
 .app {
   text-align: center;
-  
 }
+
+.app_container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 12px;
+  background-color: white;
+}
+.app_header {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 .app_logo {
   width: 10%;
   height: auto;
 }
 
 .app_form {
-  padding: 20px;
   position: fixed;
   bottom: 0;
   z-index: 1;
   background-color: #e9e9eb;
-  width: 90%;
-  margin: 20px;
+  width: 80%;
+  margin-bottom: 2%;
 }
 
 .app_formControl {
@@ -25,6 +40,8 @@
 }
 
 .app_input {
+  padding: 10px;
+  margin-bottom: 5px;
   flex: 1;
 }
 

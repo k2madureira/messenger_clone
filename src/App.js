@@ -43,29 +43,31 @@ const sendMessage = (event) => {
 
   return (
     <div className="app">
-    <img className="app_logo" src="logo.png" alt="messange logo"/>
-     <h1>Messager</h1>
-     <h2>Seja bem vindo(a), {userName} </h2>
+      <div className="app_header">
+        <img className="app_logo" src="logo.png" alt="messange logo"/>
+        <h2>Seja bem vindo(a), {userName || '👽'} </h2>
+      </div>
+      <div className="app_container">
+        <form className="app_form">
+          <FormControl className="app_formControl">
+            <p>{userName ? '🤖' : '👽'} ({userName || 'ET'})</p>
+            <Input className="app_input" placeholder="Digite sua menssagem..." value={input} onChange={event => setInput(event.target.value)} /> 
+            <IconButton
+            className="app_iconButton" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}
+            >
+              <SendIcon />
+            </IconButton>
+          </FormControl>
+        </form>
 
-     <form className="app_form">
-      <FormControl className="app_formControl">
-        <Input className="app_input" placeholder="Digite sua menssagem..." value={input} onChange={event => setInput(event.target.value)} /> 
-        <IconButton
-         className="app_iconButton" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}
-        >
-          <SendIcon />
-        </IconButton>
-      </FormControl>
-     </form>
-
-     <FlipMove>
-      {
-        messages.map(({id,message}) => (
-          <Message key={id} username={userName} message={message}/>
-        ))
-     }
-     </FlipMove>
-    
+        <FlipMove>
+          {
+            messages.map(({id,message}) => (
+              <Message key={id} username={userName} message={message}/>
+            ))
+        }
+        </FlipMove>
+      </div>
     </div>
   );
 }

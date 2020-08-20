@@ -4,6 +4,9 @@
   width: fit-content;
 }
 
+.message_text {
+  font-size: 16px !important;
+}
 .message_user {
   margin-left: auto;
   color: white;
@@ -12,8 +15,14 @@
 
 .message_userCard {
   background-color: #0b81ff !important;
+  border-radius: 10px 10px 0px !important;
+  color: white !important;
 }
 
 .message_guestCard {
   background-color: #e9e9eb !important;
+  border: none; 
+  border-radius: 0px 10px 10px !important;
+  margin: none;
+  box-shadow: 0px 2px 10px rgba(162, 155, 254, 0.25); 
 }
