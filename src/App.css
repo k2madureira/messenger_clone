@@ -14,6 +14,43 @@ html {
   font-size: 12px;
   background-color: white;
 }
+
+.app_messages_box {
+  position: relative;
+  height: 60vh;
+  max-height: 1200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment 
+{
+    height: 15px;
+    width: 13px;
+    display: block;
+    background: transparent;
+    background-repeat: no-repeat; 
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent; 
+}
+
+::-webkit-scrollbar-thumb:vertical 
+{
+  height: 50px;
+  background-color: #0b81ff;
+  border-radius: 2px;
+}
+
+
 .app_header {
   width: 80%;
   margin-left: 10%;
@@ -26,12 +63,13 @@ html {
 }
 
 .app_form {
-  position: fixed;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
   bottom: 0;
   z-index: 1;
   background-color: #e9e9eb;
-  width: 80%;
-  margin-bottom: 2%;
 }
 
 .app_formControl {
@@ -41,8 +79,13 @@ html {
 
 .app_input {
   padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
   margin-bottom: 5px;
   flex: 1;
+  background-color: white !important;
+  border-radius: 0px 10px 10px !important;
+  
 }
 
 .app_iconButton {

@@ -5,7 +5,7 @@ import './Message.css';
 const Message = forwardRef(({ message, username }, ref) => {
   
   const isUser = username === message.username;
-
+  
   return (
 
     <div>

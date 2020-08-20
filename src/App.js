@@ -20,12 +20,15 @@ useEffect(() => {
   .orderBy('timestamp','desc')
   .onSnapshot(snapshot => {
     setMessages(snapshot.docs.map(doc => ({id:doc.id,message:doc.data()})))
-  })
+  });
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }, [])
 
 useEffect(()=>{
- //const name =  prompt('Seu apelido:');
-
  setUserName(prompt('Seu apelido:'));
 },[]);
 
@@ -48,7 +51,18 @@ const sendMessage = (event) => {
         <h2>Seja bem vindo(a), {userName || '👽'} </h2>
       </div>
       <div className="app_container">
-        <form className="app_form">
+        <FlipMove className="app_messages_box">
+          {
+            messages.map(({id,message}) => (
+              <Message key={id} username={userName} message={message}/>
+            ))
+        }
+        </FlipMove>
+
+      </div>
+
+      
+      <form className="app_form">
           <FormControl className="app_formControl">
             <p>{userName ? '🤖' : '👽'} ({userName || 'ET'})</p>
             <Input className="app_input" placeholder="Digite sua menssagem..." value={input} onChange={event => setInput(event.target.value)} /> 
@@ -59,15 +73,6 @@ const sendMessage = (event) => {
             </IconButton>
           </FormControl>
         </form>
-
-        <FlipMove>
-          {
-            messages.map(({id,message}) => (
-              <Message key={id} username={userName} message={message}/>
-            ))
-        }
-        </FlipMove>
-      </div>
     </div>
   );
 }
